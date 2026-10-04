@@ -99,4 +99,12 @@ public class JadeJS {
     public static ProgressStyle progressStyle() {
         return IElementHelper.get().progressStyle();
     }
+
+    public static ColorPalette colorPalette() {
+        return ColorPalette.DEFAULT;
+    }
+
+    public static ColorPalette colorPalette(int normal, int info, int title, int success, int warning, int danger, int failure) {
+        return new ColorPalette(normal, info, title, success, warning, danger, failure);
+    }
 }
