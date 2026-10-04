@@ -18,6 +18,22 @@ group = mod_group_id
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        url "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
+
+    maven {
+        url 'https://jitpack.io'
+        content {
+            includeGroup "com.github.rtyley"
+        }
+    }
+
+    maven { url = "https://api.modrinth.com/maven" }
 }
 
 base {
@@ -95,6 +111,9 @@ dependencies {
     // And its provides the option to then use net.minecraft as the group, and one of; client, server or joined as the module name, plus the game version as version.
     // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
     implementation "net.neoforged:neoforge:${neo_version}"
+    implementation "dev.latvian.mods:kubejs-neoforge:${kubejs_version}"
+    implementation "maven.modrinth:jade:${jade_version}"
+
 
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -133,6 +152,8 @@ tasks.withType(ProcessResources).configureEach {
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
+            kubejs_version         : kubejs_version,
+            jade_version           : jade_version,
     ]
     inputs.properties replaceProperties
 
